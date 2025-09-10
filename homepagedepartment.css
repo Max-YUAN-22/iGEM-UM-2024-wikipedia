@@ -1,0 +1,143 @@
+/* <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Animated Page</title>
+    <style> */
+/* All the CSS provided in your message */
+.backgroundrepeat {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    background: url('https://static.igem.wiki/teams/5353/background/bg.png') repeat;
+    background-attachment: scroll;
+    background-size: 100% 400vh;
+}
+
+.cloud {
+    margin-top: 55px;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    transition: transform 0.5s ease-out;
+    opacity: 0.8;
+    z-index: 2;
+}
+
+#cloud-left {
+    background: url('https://static.igem.wiki/teams/5353/homecloud/cloud.jpg') no-repeat;
+    left: 0;
+}
+
+#cloud-right {
+    background: url('https://static.igem.wiki/teams/5353/homecloud/cloud.jpg') no-repeat;
+    right: 0;
+    transform: scaleX(-1);
+}
+
+/* All other CSS classes provided... */
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .item {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .cute-box {
+        width: 90%;
+        margin: 20px auto;
+        border: 2px solid red;
+    }
+}
+
+/* }
+    </style>
+</head>
+<body class="backgroundrepeat">
+    <div id="cloud-left" class="cloud"></div>
+    <div id="cloud-right" class="cloud"></div>
+
+    <div class="move">
+        <div class="cell">
+            <img src="cell1.png" alt="Cell 1" class="cell1">
+            <img src="cell2.png" alt="Cell 2" class="cell2">
+        </div>
+        <div class="animation">
+            <img src="leaf.png" alt="Leaf" class="leaf">
+            <img src="sword.png" alt="Sword" class="sword">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="item" style="background-image: url('pic_department1.png');">
+            <div class="inner">
+                <h1>Department 1</h1>
+                <h2>Description</h2>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+        <div class="item" style="background-image: url('pic_department2.png');">
+            <div class="inner">
+                <h1>Department 2</h1>
+                <h2>Description</h2>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+        <div class="item" style="background-image: url('pic_department3.png');">
+            <div class="inner">
+                <h1>Department 3</h1>
+                <h2>Description</h2>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+        <div class="item" style="background-image: url('pic_department4.png');">
+            <div class="inner">
+                <h1>Department 4</h1>
+                <h2>Description</h2>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="cute-box fade-in">
+        <h2 class="title">Welcome to Our Cute World!</h2>
+        <p>Discover the magic of our adorable universe. Here, you'll find joy, wonder, and endless cuteness!</p>
+        <a href="#" class="learn-more">Explore More</a>
+    </div>
+
+    <div class="bottom"></div>
+    <div class="bottom1"></div>
+    <div class="bottom2"></div>
+
+    <script>
+        // Animation for cell
+        setTimeout(() => {
+            document.querySelector('.cell1').classList.add('cell1_ani');
+            document.querySelector('.cell2').classList.add('cell2_ani');
+        }, 2000);
+
+        // Animation for leaf and sword
+        setTimeout(() => {
+            document.querySelector('.leaf').classList.add('leaf_ani');
+            document.querySelector('.sword').classList.add('sword_move');
+        }, 1000);
+
+        // Fade-in animation for cute-box
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.fade-in').classList.add('active');
+            }, 500);
+        });
+    </script>
+</body>
+</html> */

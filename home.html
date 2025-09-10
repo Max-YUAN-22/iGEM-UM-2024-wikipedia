@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="https://static.igem.wiki/common/icons/favicons/igem-2022.svg" />
+  <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+
+  <!-- Bootstrap CSS -->
+  <link href="static/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="static/homepage.css" rel="stylesheet">
+  <link href="static/style.css" rel="stylesheet">
+  <link href="static/card.css" rel="stylesheet">
+  <link href="static/layui.css" rel="stylesheet">
+  <link href="static/loading.css" rel="stylesheet">
+
+  <title>Home | UM-Macau - iGEM 2024</title>
+
+  <style>
+    body {
+      background: none;
+    }
+
+    .below-wave {
+       background-image: linear-gradient(to bottom, #222222, transparent, #c1e3f1 25%);
+       height: 100%;
+      }
+
+     .subinfo {
+       display: flex;
+       flex-direction: column;
+       /*justify-content: space-between;*/
+       align-items: start;
+      }
+
+
+      .subtitle {
+       list-style: none;
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+       align-items: start;
+      }
+
+      .subtitle-text {
+        font-size: 3vh;
+        text-shadow: 0.2vw 0.2vw 0 #96bee8;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+     .logo-container {
+        margin-top: 20px;
+        height: calc(100vh - 350px - 20px);
+      } 
+  </style>
+</head>
+
+<body style="height: auto; background-color: #222222;">
+
+  <header>
+    <!-- Navigation -->
+    <nav class="navbar-expand-lg fixed-top">
+      <div class="menu-bar" id="navbar">
+        <a class="navbar-brand logo" href="#">UM-Macau</a>
+
+        <button class="navbar-toggler" id="navbarToggle">
+          <span class="bar" id="bar1"></span>
+          <span class="bar" id="bar2"></span>
+          <span class="bar" id="bar3"></span>
+        </button>
+
+        <div class="fullscreen-menu" id="fullscreenMenu">
+          <button class="close-menu" id="closeMenu">×</button>
+          <ul class="navbar-nav" id="navbarNav">
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="teamDropdown" role="button">
+                Team
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="teamDropdown">
+                <li><a class="dropdown-item" href="{{ url_for('pages', page='team') }}">Team</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('pages', page='attributions') }}">Attributions</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="projectDropdown" role="button">
+                Project
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="projectDropdown">
+                <li><a class="dropdown-item" href="{{ url_for('pages', page='contribution') }}">Contribution</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('pages', page='description') }}">Description</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="wetLabDropdown" role="button">
+                Wet Lab
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="wetLabDropdown">
+                <li><a class="dropdown-item" href="{{ url_for('pages', page='parts') }}">Parts</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('pages', page='protocol') }}">Protocol</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('pages', page='notebook') }}">Notebook</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('pages', page='engineering') }}">Engineering</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('pages', page='results') }}">Results</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="humanPracticeDropdown" role="button">
+                Human Practices
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="humanPracticeDropdown">
+                <li><a class="dropdown-item" href="{{ url_for('pages', page='sustainable') }}">SDG</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('pages', page='human-practices') }}">IHP</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('pages', page='safety') }}">Safety</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('pages', page='model') }}">Modeling</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </nav>
+    <style>
+      /* Dropdown menu styles */
+      #dropdown-menu {
+        display: none;
+        position: absolute;
+      }
+
+      .dropdown-menu {
+        background-color: var(--color-black);
+        border: none;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        /* Ensure it appears above other elements */
+      }
+
+      .nav-item:hover #dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-menu .dropdown-item {
+        color: var(--color-white);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: all 0.3s;
+      }
+
+      .dropdown-menu .dropdown-item:hover {
+        color: var(--color-primary);
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    </style>
+  </header>
+
+  <div>
+    <!-- main content -->
+    <main class="parallax-container" id="parallax">
+      <!--homecontent-->
+      <div class="content">
+        <div class="parallax-layer logo12" style="filter: drop-shadow(rgba(255, 215, 0, 0.7) 0px 0px 15px);">
+          <img id="logo1" src="https://static.igem.wiki/teams/5353/homecloud/figure.png"
+            alt="Ethereal warrior logo with glowing golden aura" width="500" height="700" style="display: none;">
+          <img id="logo2" src="https://static.igem.wiki/teams/5353/homecloud/ordinaryguy.jpg" alt=" Ethereal
+                        warrior logo with glowing golden aura">
+        </div>
+        <!--cloudleft-->
+        <div class="cloud" id="cloud-left" style="transform: translateX(0%);"></div>
+        <!--central logo-->
+        <img src="https://static.igem.wiki/teams/5353/home/cavenger.jpg"
+          style="padding: 3vw; margin-left: 18vw;width: 65vw;margin-top: 10vh; height:auto" alt="Responsive image">
+        <!--cloudright-->
+        <div class="cloud" id="cloud-right" style="transform: translateX(0%) scaleX(-1);"></div>
+      </div>
+
+      <!-- channel line -->
+      <section class="channel-move">
+        <div class="channel-line">
+        </div>
+        <div style="position: relative;">
+          <img id="move" class="move" src="https://static.igem.wiki/teams/5353/homecloud/goldbackground.png" alt=""
+            style="top: 0px;">
+        </div>
+      </section>
+
+      <!-- project description -->
+      <section class="project-description">
+        <div class="container">
+          <div class="container my-4" style="padding: 0 5rem;">
+            <!-- text1 -->
+            <div class="row" style="transform: translateX(0%);">
+              <!-- Left 1-->
+              <div class="col left_col">
+                <div class="cute-box fade-in color-white">
+                  <h2 class="title">What should you do if you have Cancer?
+                    In BC3000, you will be told “no cure”<br>
+                    In the Edwin Smith Papyrus, your symptoms will be recorded, but doctors have no idea about the
+                    causes
+                  </h2>
+                </div>
+              </div>
+              <div class="col-md-auto color-white" style="width: 50px;">
+
+              </div>
+
+              <!-- right image 1 -->
+              <div class="col right_col">
+                <div class="cute-box fade-in color-white text_content" style="position: relative;">
+                  <img src="https://static.igem.wiki/teams/5353/home/homeimage2.jpg" alt="">
+                  <div style="display: flex;justify-content: center;">
+                    <img src="../assets/item_img.png" alt="" style="width: 100%;height: auto;max-width: 400px;">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- text2 -->
+            <div class="row" style="margin-top: 50px;">
+              <!-- left image 2 -->
+              <div class="col left_col">
+                <div class="cute-box fade-in color-white text_content" style="position: relative;">
+                  <div style="display: flex;justify-content: center;">
+                    <img src="https://static.igem.wiki/teams/5353/home/homeimage3.jpg" alt=""
+                      style="width: 100%;height: auto;max-width: 400px;">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-auto color-white" style="width: 50px;">
+
+              </div>
+
+              <!-- right 2 -->
+              <div class="col right_col">
+                <div class="cute-box fade-in color-white ">
+                  <h2 class="title">If you were in the Middle Ages, doctors will probably use bloodletting, or herbal
+                    remedies<br>
+                    Unfortunately, it won't ease your discomfort</h2>
+                </div>
+              </div>
+
+            </div>
+            <!-- text3 -->
+            <div class="row" style="transform: translateX(0%);">
+              <!-- Left 3 -->
+              <div class="col left_col">
+                <div class="cute-box fade-in color-white">
+                  <h2 class="title"> If you were at the end of the nineteenth century, chemotherapy and radiation had
+                    emerged
+                    But because of the immaturity of technology and materials, You will suffer immensely from the side
+                    effects of your treatment.
+                  </h2>
+                </div>
+              </div>
+              <div class="col-md-auto color-white" style="width: 50px;">
+
+              </div>
+
+              <!-- right image 3 -->
+              <div class="col right_col">
+                <div class="cute-box fade-in color-white text_content" style="position: relative;">
+                  <img src="https://static.igem.wiki/teams/5353/home/homeimage5.jpg" alt="">
+                  <div style="display: flex;justify-content: center;">
+                    <img src="../assets/item_img.png" alt="" style="width: 100%;height: auto;max-width: 400px;">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- text4 -->
+            <div class="row" style="margin-top: 50px;">
+              <!-- left image 4 -->
+              <div class="col left_col">
+                <div class="cute-box fade-in color-white text_content" style="position: relative;">
+                  <div style="display: flex;justify-content: center;">
+                    <img src="https://static.igem.wiki/teams/5353/home/homeimage1.jpg" alt=""
+                      style="width: 100%;height: auto;max-width: 400px;">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-auto color-white" style="width: 50px;">
+
+              </div>
+
+              <!-- right 4 -->
+              <div class="col right_col">
+                <div class="cute-box fade-in color-white ">
+                  <h2 class="title" style="margin-top: 10%;">Back in the modern era, advances in science and technology
+                    have driven the progress
+                    of
+                    cancer treatment. The research of targeted therapy and immunotherapy provides you with more
+                    treatment
+                    options
+                    However, you may not be able to afford the expensive treatment.</h2>
+                </div>
+              </div>
+
+            </div>
+            <!-- text5 -->
+            <div class="row" style="transform: translateX(0%);">
+              <!-- left 5 -->
+              <div class="col left_col">
+                <div class="cute-box fade-in color-white">
+                  <h2 class="title"> Now synthetic biology is coming into view...
+                    Now, we use synthetic biology methods to create a unique approach to killing cancer cells through a
+                    "controlled bidirectional calcium overload platform."
+                  </h2>
+                </div>
+              </div>
+              <div class="col-md-auto color-white" style="width: 50px;">
+
+              </div>
+
+              <!-- right image 5 -->
+              <div class="col right_col">
+                <div class="cute-box fade-in color-white text_content" style="position: relative;">
+                  <img src="https://static.igem.wiki/teams/5353/home/homeimage7.png" alt="">
+                  <div style="display: flex;justify-content: center;">
+                    <img src="../assets/item_img.png" alt="" style="width: 100%;height: auto;max-width: 400px;">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- text6 -->
+            <div class="row" style="margin-top: 50px;">
+              <!-- left image 6 -->
+              <div class="col left_col" style="opacity: 0;">
+                <div class="cute-box fade-in color-white text_content" style="position: relative;">
+                  <div style="display: flex;justify-content: center;">
+                    <div class="cute-box fade-in color-white">
+                      <h2 class="title"> The pathway is named as
+                        “CaVenger X”</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-auto color-white" style="width: 50px;">
+
+              </div>
+
+              <!-- right 6 -->
+              <div class="col right_col">
+                <div class="cute-box fade-in color-white ">
+                  <h2 class="title">Calcium ions will flow into the
+                    cytoplasm from the outside of the cell, or
+                    be released from the calcium reservoir of
+                    the endoplasmic reticulum into the
+                    cytoplasm to play a role. Just like a
+                    sword
+                  </h2>
+                </div>
+              </div>
+
+            </div>
+            <!-- text 7 -->
+            <div class="row" style="transform: translateX(0%);margin-top: 34vh;">
+              <!-- left 7 -->
+              <div class="more-text col left_col" style="opacity: 0;">
+                <div class="cute-box fade-in color-white">
+                  <h2 class="title" style="margin-top: 34vh; font-size: 48px;">Find out more! </h2>
+                </div>
+              </div>
+              <div class="col-md-auto color-white" style="width: -50px;">
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- final cell animation -->
+      <section class="cell-animation">
+        <div class="cell">
+          <img class="cell1" id="cell1" src="https://static.igem.wiki/teams/5353/homecloud/healthycell.png" />
+          <img class="cell2" id="cell2" src="https://static.igem.wiki/teams/5353/homecloud/brokencell.png" />
+        </div>
+        <div class="animation">
+          <img class="sword" id='sword' src="https://static.igem.wiki/teams/5353/homecloud/sword.png"
+            style="z-index: 11111;" />
+          <img class="leaf" id='leaf' src="https://static.igem.wiki/teams/5353/homecloud/leaf.png"
+            style="z-index: 11111;" />
+        </div>
+      </section>
+
+      <!-- four department -->
+      <section class="department-section">
+        <div class="departcontainer">
+          <div class="item" style="background-image:url(https://static.igem.wiki/teams/5353/teamhomepage/artwork.jpg);">
+            <div class="inner">
+              <h1>Team</h1>
+              <a href="https://2024.igem.wiki/um-macau/Project">view more</a>
+            </div>
+          </div>
+          <div class="item" style="background-image: url(https://static.igem.wiki/teams/5353/teamhomepage/drylab.jpg);">
+            <div class="inner">
+              <h1>Project</h1>
+              <a href="https://2024.igem.wiki/um-macau/Modeling">view more</a>
+            </div>
+          </div>
+          <div class="item" style="background-image: url(https://static.igem.wiki/teams/5353/teamhomepage/wetlab.jpg);">
+            <div class="inner">
+              <h1>Wet lab</h1>
+              <a href="https://2024.igem.wiki/um-macau/Wet Lab">view more</a>
+            </div>
+          </div>
+          <div class="item"
+            style="background-image: url(https://static.igem.wiki/teams/5353/teamhomepage/humanpractice.jpg);">
+            <div class="inner">
+              <h1>Human Practices</h1>
+              <a href="https://2024.igem.wiki/um-macau/Human Practices">view more</a>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+     <!-- promotion video-->
+     <section class="promotion-video">
+      <div style="position: relative; padding-top: 56.25%; margin-left: 10vw; margin-right: 10vw;">
+        <iframe title="UM-Macau: CaVengerX (2024) - Project Promotion [English]" 
+        width="100%" height="80%" 
+        src="https://video.igem.org/videos/embed/a72457ab-17b2-4ebc-ba6b-cd4ac078832a?start=0s&amp;stop=2m&amp;subtitle=en&amp;loop=1&amp;autoplay=1" 
+        frameborder="0" allowfullscreen="" 
+        sandbox="allow-same-origin allow-scripts allow-popups allow-forms" 
+        style="position: absolute; inset: 0px;"></iframe></div>
+     </section>
+
+     <div style="height: 100vh;">
+     <div class="below-wave">
+      <!-- wave section-->
+      <section class="wave-section">
+          <div class="wave bottom"></div>
+          <div class="wave bottom1"></div>
+          <div class="wave bottom2"></div>
+      </section>
+
+
+      <!-- footer -->
+      <footer class="logo-container text-white">
+          <div class="container">
+              <div class="footerwrap">
+                  <div>
+                      <img id="teamlogo" src="https://static.igem.wiki/teams/5353/logo/ummacaulogotrans.png"
+                           class="footer-logo">
+                  </div>
+                  <div>
+                      <img id="igem" src="https://static.igem.wiki/teams/5353/footer/igem-logo-dark.svg"
+                           class="footer-logo">
+                  </div>
+
+                  <div>
+                      <img id="cavenger" src="https://static.igem.wiki/teams/5353/footer/cavenger-x-logo.png"
+                           class="footer-logo">
+                  </div>
+
+                  <div class="subinfo">
+                      <ul id="contact" class="subtitle">
+                          <li class="subtitle-text">
+                              Contact
+                          </li>
+                          <li>
+                              <img src="https://static.igem.wiki/teams/5353/footer/ins-logo.png"
+                                   class="footer-logo-sub">
+                              <a style="color: #210eef"
+                                 href="https://instagram.com/igem_ummacau?igshid=NjIwNzIyMDk2Mg==">@igem_ummacau</a>
+                          </li>
+
+                          <li>
+                              <img src="https://static.igem.wiki/teams/5353/footer/email-logo.png"
+                                   class="footer-logo-sub">
+                              <a style="color: #210eef" href="mailto:igemum_macau@outlook.com">igemum_macau@outlook.com</a>
+                          </li>
+
+                          <li>
+                              <img src="https://static.igem.wiki/teams/5353/footer/vx-logo.png"
+                                   class="footer-logo-sub">
+                              <a style="color: #210eef" href="https://mp.weixin.qq.com/s/WVLdacLxS8hDSlwJM7OJzw">IGEM
+                                  UM</a>
+                          </li>
+
+                          <li>
+                              <img src="https://static.igem.wiki/teams/5353/footer/gitlab-logo.png"
+                                   class="footer-logo-sub">
+                              <a style="color: #210eef"
+                                 href="https://gitlab.igem.org/2024/um-macau">Pagesource</a>
+                          </li>
+                      </ul>
+                  </div>
+
+                  <div class="subinfo" id="support">
+                      <a href="https://www.imstem.com/">
+                          <img src="https://static.igem.wiki/teams/5353/footer/imstem-logo.png"
+                               class="footer-logo-sup">
+                      </a>
+                      <a href="https://www.yanyin.tech/">
+                          <img src="https://static.igem.wiki/teams/5353/footer/yanyin.png"
+                               class="footer-logo-sup">
+                      </a>
+                      <a href="https://www.um.edu.mo/">
+                          <img src="https://static.igem.wiki/teams/5353/footer/um-logo.png"
+                               class="footer-logo-sup">
+                      </a>
+                      <a href="https://fhs.um.edu.mo/en/#/">
+                          <img src="https://static.igem.wiki/teams/5353/footer/fhs-logo.png"
+                               class="footer-logo-sup">
+                      </a>
+                  </div>
+              </div>
+              <!-- The following MUST be on every page: license information and link to the repository on gitlab.igem.org -->
+              <div style="background-color: #c1e3f1; width: 100%;">
+                  <div class="text-center">
+                      <p><small>© 2024 - Content on this site is licensed under a <a class="subfoot"
+                         href="https://creativecommons.org/licenses/by/4.0/"
+                         rel="license">Creative
+                          Commons Attribution 4.0
+                          International license</a>.</small></p>
+                      <p><small>The repository used to create this website is available at <a
+                              href="https://gitlab.igem.org/2024/um-macau">gitlab.igem.org/2024/um-macau</a>.</small>
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </footer>
+  </div>
+</main>
+
+  <!-- progressbar -->
+  <div class="Progress-bar">
+      <div id="Progress1" style="background: rgb(29, 40, 58); width: 10px; height: 0%;"></div>
+      <img src="https://static.igem.wiki/teams/5353/homecloud/progressbarnormal.png" id="Progressimg" alt=""
+           width="50"
+           height="50" style="position: fixed; right: 10px; top: 0%;">
+      <img src="https://static.igem.wiki/teams/5353/homecloud/progressbartop.png" alt="" width="40" height="40"
+           class="circle-icon" id="backToTop">
+  </div>
+</div>
+
+<script src="static/homepage.js"></script>
+</body>
+
+</html>

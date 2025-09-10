@@ -1,0 +1,985 @@
+:root {
+  --background-image: url("https://static.igem.wiki/teams/5353/background/bg0.png");
+}
+
+body {
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  background: var(--background-image) repeat;
+  background-attachment: scroll;
+  background-size: 100%;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-size: cover;
+  }
+}
+
+.app-container {
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+}
+
+.parallax-container {
+  margin: 0;
+  padding: 0 20px;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  perspective: 1px;
+  scrollbar-width: none;
+  --webkit-scrollbar-width: none;
+  scroll-behavior: smooth;
+  background: url("https://static.igem.wiki/teams/5353/background/bg0.png") repeat;
+  /* background-attachment: scroll; */
+  background-size: 100%;
+}
+
+@media (max-width: 768px) {
+  .parallax-container {
+    background-size: cover;
+  }
+}
+
+.Progress {
+  width: 10px;
+  background: #293c56;
+  position: fixed;
+  right: 27px;
+  top: 0px;
+  height: 100%;
+}
+
+.content {
+  width: 100%;
+  position: relative;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 30%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo12 {
+  z-index: 1;
+  transition: all 0.5s ease;
+  /* margin-top: 35%; */
+  width: 500px;
+  margin: 35% auto 0;
+}
+
+.logo12 img {
+  max-width: 80%;
+  height: auto;
+  /*filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));*/
+}
+
+.cloud {
+  margin-top: 20%;
+  top: 20%;
+  position: fixed;
+  width: 100%;
+  height: 200%;
+
+  background-size: cover;
+  transition: transform 0.5s ease-out;
+  opacity: 0.8;
+  z-index: 2;
+}
+
+#cloud-left {
+  background: url("https://static.igem.wiki/teams/5353/homecloud/cloud.jpg") no-repeat;
+  left: 0;
+}
+
+#cloud-right {
+  background: url("https://static.igem.wiki/teams/5353/homecloud/cloud.jpg") no-repeat;
+  right: 0;
+  transform: scaleX(-1);
+}
+
+/* 轨道 */
+.channel-move {
+  margin-top: calc(35% - 100px);
+  position: relative;
+}
+
+.channel-line {
+  height: 4500px;
+  width: 50px;
+  background-color: #2b3a55;
+  z-index: 99;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.move {
+  z-index: 999;
+  width: 20vw;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  transition: all 0.1s;
+}
+
+/* 细胞动画 */
+.cell-animation {
+  margin-top: 3500px;
+  height: 200px;
+  position: relative;
+  width: 600px;
+  z-index: 996;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 100px);
+}
+
+.cell {
+  position: relative;
+  margin-top: -380px;
+  width: 600px;
+  z-index: 996;
+}
+
+.cell > img {
+  position: absolute;
+
+  width: 100%;
+}
+
+.cell > img.cell1 {
+  /* animation: cell1_ani 2s forwards; */
+}
+
+.cell > img.cell2 {
+  opacity: 0;
+
+  /* animation: cell2_ani 2s forwards; */
+}
+
+.cell > img.cell1,
+.cell > img.cell2 {
+  animation-delay: 2s;
+}
+
+.cell1_ani {
+  animation: cell1_ani 2s forwards;
+}
+
+@keyframes cell1_ani {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.cell2_ani {
+  animation: cell2_ani 2s forwards;
+}
+
+@keyframes cell2_ani {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animation {
+  position: absolute;
+  left: 200px;
+  top: 0;
+  margin-top: -380px;
+  width: 200px;
+  z-index: 1111;
+}
+
+.animation > img {
+  position: absolute;
+
+  width: 100%;
+}
+
+.animation {
+  animation: logo_ani 1s linear forwards;
+}
+
+@keyframes logo_ani {
+  100% {
+    transform: translate(0, 400px);
+  }
+}
+
+img.leaf {
+  opacity: 0;
+  top: -80px;
+  width: 100%;
+  /* animation: leaf_ani 1s forwards; */
+  animation-delay: 1s;
+}
+
+.leaf_ani {
+  animation: leaf_ani 2s forwards;
+}
+
+@keyframes leaf_ani {
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(3);
+
+    opacity: 0;
+  }
+}
+
+img.sword {
+  left: -100px;
+  top: -80px;
+
+  transform: translate(100%, -100%);
+
+  width: 200%;
+
+  opacity: 0;
+
+  /* animation: sword_move 1s forwards, sword_hide 0.5s forwards; */
+  animation-delay: 1s, 2s;
+}
+
+.sword_move {
+  animation: sword_move 2s forwards, sword_hide 1s forwards;
+}
+
+@keyframes sword_move {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(0);
+
+    opacity: 1;
+  }
+}
+
+@keyframes sword_hide {
+  100% {
+    opacity: 0;
+  }
+}
+
+.wave {
+  position: absolute;
+  width: 100%;
+  background-size: cover;
+  background-repeat: repeat-x;
+  background-position: center;
+  z-index: 999;
+  background-clip: padding-box;
+  background-image: url("./images/wave1.png");
+}
+
+.wave::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  border-radius: inherit; /*important*/
+  background: linear-gradient(to bottom, transparent 60%, #c1e3f1);
+}
+
+/* 波浪 */
+.bottom {
+  opacity: 0.4;
+  width: 100%;
+  height: 666px;
+  /* background: url(./wave3.png)no-repeat center center; */
+  background-image: url("https://static.igem.wiki/teams/5353/homecloud/wave1.png");
+  background-size: cover;
+  background-repeat: repeat-x;
+  background-position: center;
+  z-index: 999;
+  margin-top: 4500x;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  animation: seal 3s infinite alternate;
+}
+
+.bottom1 {
+  opacity: 0.6;
+  width: 100%;
+  height: 550px;
+  /* background: url(./wave1.png)no-repeat center center; */
+  background-image: url("https://static.igem.wiki/teams/5353/homecloud/wave1.png");
+  background-size: cover;
+  background-repeat: repeat-x;
+  background-position: center;
+
+  z-index: 999;
+  margin-top: 4500px;
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  animation: seal 4s infinite alternate;
+}
+
+.bottom2 {
+  opacity: 0.9;
+  width: 100%;
+  height: 368px;
+  /* background: url(./wave1.png)no-repeat center center; */
+  background-image: url("https://static.igem.wiki/teams/5353/homecloud/wave1.png");
+  background-size: cover;
+  background-repeat: repeat-x;
+  background-position: center;
+  z-index: 999;
+  margin-top: 4500px;
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  /* sael 5s 就是动画时间 这里可以自己设置 */
+  animation: seal 5s infinite alternate linear;
+}
+
+.circle-icon {
+  display: inline-block;
+  position: fixed;
+  right: 65px;
+  bottom: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: #6c6c6c;
+  border-radius: 50%;
+  padding: 13px;
+}
+
+/* 主要就是用了上下移动动画 如果感觉太单一可以复制 写三个不同的位移效果 */
+
+@keyframes seal {
+  0% {
+    bottom: 0px;
+  }
+
+  50% {
+    bottom: 15px;
+  }
+
+  100% {
+    bottom: 30px;
+  }
+}
+
+.bottomwave {
+  bottom: 0;
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.color-white {
+  color: white;
+}
+
+.text_content img {
+  width: 100%;
+  height: auto;
+}
+
+/*department*/
+.departcontainer {
+  margin-top: 4000px;
+  margin-bottom: 200px;
+  width: 76vw;
+  height: 30vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 12vw;
+}
+
+.item {
+  position: relative;
+  width: 18vw;
+  height: 18vw;
+  /* background-image: url(pic_department.png); */
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  /* border-radius: ; */
+  /* margin: 20px; */
+  /* 利用内阴影实现内部圆环 */
+  transition: 0.5s ease-in-out;
+  box-shadow: none;
+}
+
+.inner {
+  position: absolute;
+  /* margin: 20px; */
+  width: 18vw;
+  height: 18vw;
+  background-color: #ffffff68;
+  border-radius: 50%;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  text-transform: uppercase;
+  /* 初始隐藏 */
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+}
+
+.inner h1 {
+  width: 60%;
+  font-size: 16px;
+  /* 外边距增加40上边距、20下边距 */
+  margin: 40px 0 20px 0;
+  color: #fff;
+  /* 初始为缩小到0 */
+  transform: scale(0);
+  transition: 1s ease-in-out;
+}
+
+.inner h2 {
+  width: 50%;
+  font-size: 14px;
+  color: #fff;
+  /* 内边距上下增加5px */
+  padding: 5px 0;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  /* 初始向下位移40px */
+  transform: translateY(40px);
+  transition: 1s ease-in-out;
+}
+
+.inner a {
+  color: #fff;
+  text-decoration: none;
+  margin-top: 10px;
+  /* 初始向下位移40px */
+  transform: translateY(40px);
+  transition: 1s ease-in-out;
+}
+
+.inner a:hover {
+  color: var(--color1);
+}
+
+/* 开始配置动画部分 */
+
+.item:hover {
+  box-shadow: none;
+}
+
+.item:hover .inner {
+  opacity: 1;
+}
+
+.item:hover h1 {
+  transform: scale(1);
+}
+
+.item:hover h2 {
+  transform: translateY(0px);
+}
+
+.item:hover a {
+  transform: translateY(0px);
+}
+
+.footer {
+  padding: 2vh 3vw;
+  margin: 1vh 2vw;
+}
+
+.footerwrap > div {
+  height: fit-content;
+}
+
+.wave-section {
+  position: relative;
+}
+
+.footerwrap {
+  max-height: calc(100% - 32px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: auto;
+  align-content: start;
+  gap: 5px;
+}
+
+@media (max-width: 78.75vh) {
+  .footer {
+    padding: 1.5vh 2vw;
+    margin: 0.8vh 1.6vw;
+  }
+}
+
+@media (max-width: 50vh) {
+  .footer {
+    padding: 1vh 1.5vw;
+    margin: 0.5vh 1vw;
+  }
+}
+
+
+/* 响应式设计 */
+@media screen and (min-width: 300px) {
+  .header {
+    height: 100px;
+  }
+
+  /* .content { height: 300px; } */
+  .channel-move {
+    height: 150px;
+  }
+
+  .project-description {
+    height: 200px;
+  }
+
+  .cell-animation {
+    height: 250px;
+  }
+
+  .department-section {
+    margin-top: 300px;
+    height: 200px;
+  }
+
+  .wave-section {
+    height: 150px;
+  }
+
+  .footer {
+    height: 100px;
+  }
+
+  .footer-logo {
+    height: 7vh;
+  }
+
+  .footerwrap {
+    flex-direction: row;
+  }
+
+  .footer-logo-sup {
+    height: 5vh;
+  }
+
+  .footer-logo-sub {
+    height: 3vh;
+    width: 3vh;
+  }
+}
+
+/* 中等屏幕 (min-width: 576px) */
+@media screen and (min-width: 576px) {
+  .header {
+    height: 120px;
+  }
+
+  /* .content { height: 400px; } */
+  .channel-move {
+    height: 200px;
+  }
+
+  .project-description {
+    height: 250px;
+  }
+
+  .cell-animation {
+    height: 300px;
+  }
+
+  .department-section {
+    height: 250px;
+  }
+
+  .wave-section {
+    height: 200px;
+  }
+
+  .footer {
+    height: 120px;
+  }
+
+  .footerwrap {
+    flex-direction: row;
+  }
+
+  .footer-logo {
+    height: 7vh;
+  }
+
+  .footer-logo-sup {
+    height: 6vh;
+  }
+
+  .footer-logo-sub {
+    height: 4vh;
+    width: 4vh;
+  }
+}
+
+/* 平板 (min-width: 768px) */
+@media screen and (min-width: 768px) {
+  .header {
+    height: 140px;
+  }
+
+  /* .content { height: 500px; } */
+  .channel-move {
+    height: 250px;
+  }
+
+  .project-description {
+    height: 300px;
+  }
+
+  .cell-animation {
+    height: 350px;
+  }
+
+  .department-section {
+    height: 300px;
+  }
+
+  .wave-section {
+    height: 250px;
+  }
+
+  .footer {
+    height: 140px;
+  }
+
+  .footerwrap {
+    flex-direction: column;
+  }
+
+  .footer-logo {
+    height: 12vh;
+  }
+
+  .footer-logo-sup {
+    height: 10vh;
+  }
+
+  .footer-logo-sub {
+    height: 4vh;
+    width: 4vh;
+  }
+}
+
+/* 桌面 (min-width: 992px) */
+@media screen and (min-width: 992px) {
+  .header {
+    height: 160px;
+  }
+
+  /* .content { height: 600px; } */
+  .channel-move {
+    height: 300px;
+  }
+
+  .project-description {
+    height: 350px;
+  }
+
+  .cell-animation {
+    height: 400px;
+  }
+
+  .department-section {
+    height: 350px;
+  }
+
+  .wave-section {
+    height: 300px;
+  }
+
+  .footer {
+    height: 160px;
+  }
+
+  .footerwrap {
+    flex-direction: column;
+  }
+
+  .footer-logo {
+    height: 12vh;
+  }
+
+  .footer-logo-sup {
+    height: 10vh;
+  }
+
+  .footer-logo-sub {
+    height: 4vh;
+    width: 4vh;
+  }
+}
+
+/* 大桌面 (min-width: 1200px) */
+@media screen and (min-width: 1200px) {
+  .header {
+    height: 180px;
+  }
+
+  /* .content { height: 700px; } */
+  .channel-move {
+    height: 350px;
+  }
+
+  .project-description {
+    height: 400px;
+  }
+
+  .cell-animation {
+    height: 450px;
+  }
+
+  .department-section {
+    height: 400px;
+  }
+
+  .wave-section {
+    height: 350px;
+  }
+
+  .footer {
+    height: 180px;
+  }
+
+  .footerwrap {
+    flex-direction: column;
+  }
+
+  .footer-logo {
+    height: 20vh;
+  }
+
+  .footer-logo-sup {
+    height: 10vh;
+  }
+
+  .footer-logo-sub {
+    height: 5vh;
+    width: 5vh;
+  }
+}
+
+.title {
+  font-size: 1.5vw;
+  margin-top: 50%;
+}
+
+.parallax-container .more-text .title {
+  margin-top: 25vh !important;
+}
+
+@media screen and (max-width: 1250px) {
+  .more-text .title {
+    margin-top: 69vh;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .parallax-container .cell-animation {
+    top: -212% !important;
+  }
+  .parallax-container .more-text .title {
+    margin-top: 250px !important;
+  }
+}
+
+@media screen and (max-width: 391px) {
+  .cell-animation {
+    top: -163% !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .animation {
+    top: -200px;
+  }
+  .logo12 {
+    width: auto;
+  }
+
+  .more-text .title {
+    margin-top: 100px !important;
+  }
+
+  .channel-move {
+    margin-top: calc(60% - 100px);
+  }
+
+  .container .container.my-4 {
+    padding: 0 5px !important;
+  }
+
+  .title {
+    font-size: 2.5vw;
+  }
+
+  .cute-box .title.learn {
+    margin: 0 auto;
+  }
+
+  .cell-animation {
+    top: -150%;
+  }
+
+  .cell-animation .cell {
+    width: 300px;
+    left: 25%;
+  }
+
+  .channel-line {
+    height: 1800px !important;
+  }
+
+  .more-text {
+    transform: translateX(0) !important;
+  }
+
+  .departcontainer {
+    margin-top: 1750px;
+    height: 70vw;
+    flex-wrap: wrap;
+  }
+
+  .departcontainer .item {
+    height: 150px;
+    flex: 0 0 calc(50% - 10px);
+    margin: 5px;
+  }
+
+  .departcontainer .inner {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar-nav.collapsed {
+  display: none;
+}
+
+.navbar-toggler {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.bar {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #ffffff;
+  margin: 5px auto;
+  transition: all 0.3s;
+}
+
+.navbar-toggler.active span.bar1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggler.active .bar2 {
+  opacity: 0;
+}
+
+.navbar-toggler.active .bar3 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.fullscreen-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 1);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow-y: auto;
+  padding-top: 270px;
+}
+
+.close-menu {
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 999999;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    margin-top: 30px;
+    display: none;
+  }
+
+  .navbar-toggler {
+    display: block;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+  .menu-bar {
+    flex-direction: row !important;
+  }
+}

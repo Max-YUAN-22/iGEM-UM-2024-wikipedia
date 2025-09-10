@@ -1,0 +1,104 @@
+ * {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+  }
+
+  /* body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #d3dafa;
+  } */
+  .shell{
+      position:fixed;
+      width: 280px;
+      height: 800px;
+      background-color: #8ac999;
+      border-radius: 0%;
+  }
+  .buttons{
+      margin: 300px 0 60px 0;
+      color: #ffffff;
+     
+  }
+  .li{
+      letter-spacing: 2px;
+      font: 600 17px '';
+      padding: 16px 52px;
+      transition: .3s;
+  }
+  .li::after{
+      content: '';
+      position: absolute;
+      left: 20px;
+      margin-top: -22px;
+      display: block;
+      width: 20px;
+      height: 20px;
+      background-color: #ffffff;
+      border-radius: 50%;
+  }
+  .buttons>li:hover{
+      background-color: #c2dfb5;
+  }
+  
+  .li ul{
+      width: 0;
+      height: 530px;
+      padding: 60px 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      overflow: hidden;
+      background-color: #599b93;
+      transition: .3s;
+  }
+
+  .li ul li{
+      padding: 16px 24px;
+      transition: .3s;
+           background: linear-gradient(to right, #79e089 50%, #599b93 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+             transition:all 2s ease;
+  }
+
+  .li:hover ul{
+      width: 228px;
+  }
+  .li ul li:hover{
+    background-position: left bottom;
+  }
+     .e{
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            /* 设置阴影 */
+            filter: drop-shadow(4px 4px 12px rgba(0,0,0,.5));
+            background-size: cover;
+            opacity: 1;
+            transition: .5s;
+        }
+   
+      
+        .e{
+   
+            bottom: -160px;
+            right: -160px;
+            transform: rotateZ(45deg);
+            overflow: hidden;
+        }
+        .e::after{
+            transform: rotateZ(0deg);
+        }
+        /* 设置动画 */
+        .blog-slider_img:hover .e{
+          
+            bottom: 0px;
+            right: 0px;
+            transform: rotateZ(0deg);
+            /* background-image: url(ding.png); */
+   
+        }

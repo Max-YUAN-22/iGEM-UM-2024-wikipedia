@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+  
+{% block title %}Project Description{% endblock %}
+{% block lead %}iGEM 2024 UM-Macau CaVengerX{% endblock %}
+
+{% block page_content %}
+
+<div class="row mt-4">
+  <div class="col">
+    <h2>CaVengerX</h2>
+    <hr>
+    <ul>
+      <p>Cancer remains a global challenge and a persisting leading cause of death despite extensive efforts to combat it. The complexity of the disease, along with the drug resistance of cancer cells has made finding a effective therapeutic approach became an elusive goal. Classical approaches, such as chemotherapy and radiotherapy, are limited by their non-specificity and drug resistance. While recent advancements in immunotherapy have significantly benefited some patients, a substantial percentage of patients do not respond to these treatments. Therefore, a novel strategy that improves specificity and reduces the likelihood of drug resistance is urgently needed.</p>
+      <p>Our project focuses on developing a novel approach by engineering exosomes to deliver essential proteins to cancer cells, stimulating calcium overloading and inducing cancer cell death. This strategy involves introducing calcium ion channels (MscS or hTRPC1) and an NO signaling activator (hNOS2) using exosomes as the delivery vehicle (Figure 1).</p>
+      <div>
+        <image src="https://static.igem.wiki/teams/5353/description/project-description-figure1.png" alt="autoimmune" style="width: 60vw;"></image>
+      </div>
+      <p style="font-style: italic;">Figure 1. The overview of the calcium overload killing mechanism for cancer therapy.</p>
+      <p>We refer to iGEM16_Slovenia group and select the MscS (bacterial Mechanosensitive Channel ) (BBa_K1965000) and hTRPC1 (Transient Receptor Potential Channel 1) (BBa_K1965002) calcium ion channels that respond to physical stress on the membrane and can be activated by ultrasound stimulation (Hurst et al., 2007; Kunichika et al., 2004). By introducing these channels into cancer cells, we aim to generate calcium overloading. Ultrasound stimulation will precisely control cell death by opening the channels and leading to calcium ion influx (Hu et al., 2024).</p>
+      <p>hNOS2 (Nitric Oxide Synthase 2) is an enzyme that induces NO signaling by catalyzing the reaction: L-arginine + O2 + NADPH + H+ → NO + L-citrulline + NADP+ + H2O. Upregulation of the NO signal can induce the opening of the RyR calcium channel on the endoplasmic reticulum, dramatically increasing intracellular calcium levels (Ziolo et al., 2001).</p>
+      <p>To deliver our target proteins to cancer cells, we propose using exosomes as the carrier vehicle (Salunkhe et al., 2020). We will utilize the exosomal transmembrane protein lamp2b, fused with our target proteins, to enhance the loading of MscS, hTRPC1, and hNOS2 into the exosomes. Indeed, Lamp2b has been widely used in the manufacture of engineered exosomes for targeted drug delivery (Qiao et al., 2023).</p>
+      <p>Our proposed system offers several advantages: (1) using engineered exosomes ensures highly targeted delivery directly to cancer cells; (2) specificity can be further improved and precision targeting can be achieved based on cancer properties through additional engineering of exosomes; (3) precision-controlled cell death can be provided by ultrasound stimulation; (4) exosome carriers have good biocompatibility and are immunologically safer compared to other nanoparticle carriers; (5) calcium overload disrupts cell homeostasis, making it difficult for cancer cells to develop drug resistance. Hence, we believe this innovative system could provide specific, effective, and safe cancer therapies, offering new hope for patients who do not respond to existing treatments.</p>
+    </ul>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h2>References</h2>
+    <hr>
+    <ul>
+      <li>“Team:Slovenia - 2016.Igem.org.” 2016.Igem.org, 2016.igem.org/Team:Slovenia. 
+        <a href="https://2016.igem.org/Team:Slovenia/Mechanosensing/Mechanosensitive_channels">https://2016.igem.org/Team:Slovenia/Mechanosensing/Mechanosensitive_channels</a>.</li>
+      <li>Hu, et al. “Photo-Controlled Calcium Overload from Endogenous Sources for Tumor Therapy.” Angewandte Chemie, Vol 63(9), 2024, e202317578–78, 
+        <a href="https://doi.org/10.1002/anie.202317578">https://doi.org/10.1002/anie.202317578</a>.</li>
+      <li>Hurst, et al., " NscS, the bacterial mechanosensitive channel of small conductance." International Journal of Biochemistry & Cell Biology, Vol 40(4) 581-1, 
+        <a href="https://doi.org/10.1016/j.biocel.2007.03.013">https://doi.org/10.1016/j.biocel.2007.03.013</a>.</li>
+      <li>Kunichika et al., "Overexpression of TRPC1 enhances pulmonary vasoconstriction induced by capacitative Ca2+ entry" American Journal of Physiology Lung Cellular and Molecular Physiology, Vol 298(5), 2004, L962-9
+        <a href="https://doi.org/10.1152/ajplung.00452.2003">https://doi.org/10.1152/ajplung.00452.2003</a>.</li>
+      <li>Qiao, et al. “LAMP2A, LAMP2B and LAMP2C: Similar Structures, Divergent Roles.” Autophagy, Vol19, 2023, 1–16,
+        <a href="https://doi.org/10.1080/15548627.2023.2235196">https://doi.org/10.1080/15548627.2023.2235196</a>.</li>
+      <li>Salunkhe, et al. “Surface Functionalization of Exosomes for Target-Specific Delivery and in Vivo Imaging & Tracking: Strategies and Significance.” Journal of Controlled Release, vol. 326, 2020, 599–614,
+        <a href="https://doi.org/10.1016/j.jconrel.2020.07.042">https://doi.org/10.1016/j.jconrel.2020.07.042</a>.</li>
+      <li>Ziolo et al., "Expression of inducible nitric oxide synthase depresses beta-adrenergic-stimulated calcium release from the sarcoplasmic reticulum in intact ventricular myocytes." Circulation Vol 104(24), 2001, 2961-6,
+        <a href="https://doi.org/10.1161/hc4901.100379">https://doi.org/10.1161/hc4901.100379</a>.</li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}
